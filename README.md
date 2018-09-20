@@ -46,10 +46,10 @@ In this project you've been asked to build an internal reporting tool that will 
   * The log table includes one entry for each time a user has accessed the site.
 
   2. Use `psql -d news` to connect to database.
-  * You can use in the command line : 
-  
+  * You can use in the command line :
+
   ```
-    \dt — display tables — lists the tables that are available in the database and 
+    \dt — display tables — lists the tables that are available in the database and
     \d table — (replace table with the name of a table) — shows the database schema for that particular table.
   ```
 
@@ -59,10 +59,10 @@ In this project you've been asked to build an internal reporting tool that will 
     log.path like concat('%',articles.slug) group by articles.title,articles.author
     order by views desc;
   ```
- 
-  4. Create author_view using: 
+
+  4. Create author_view using:
   ```
-    create view as author_view as select name, sum(article_view.views) as total from article_view, authors where 
+    create view author_view as select name, sum(article_view.views) as total from article_view, authors where 
     authors.id=article_view, author group by authors.name order by total desc;
   ```  
   5. Create view error_log_view using:
@@ -78,5 +78,3 @@ In this project you've been asked to build an internal reporting tool that will 
   ```
     $ python logs_analysis.py
   ```
-  
-

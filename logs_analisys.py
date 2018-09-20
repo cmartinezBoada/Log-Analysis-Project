@@ -1,9 +1,12 @@
+#! /usr/bin/env python3
+
 import psycopg2
 DB_NAME = "news"
 
 
 def connect():
     return psycopg2.connect("dbname=news")
+
 
 # 1. What are the most popular three articles of all time?
 query1 = "select title, views from article_view limit 3"
@@ -47,7 +50,8 @@ def percent_error(query3):
     for i in range(len(results)):
         date = results[i][0]
         err_prc = results[i][1]
-        print ('\t' + str(date) + ' ---> ' + str(err_prc) + ' %')
+        print('\t' + str(date) + ' ---> ' + str(err_prc) + ' %')
+
 
 if __name__ == "__main__":
     print("1. The list of the three most popular articles are:")
