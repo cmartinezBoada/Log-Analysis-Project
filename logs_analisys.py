@@ -5,7 +5,16 @@ DB_NAME = "news"
 
 
 def connect():
-    return psycopg2.connect("dbname=news")
+    try:
+        conn = psycopg2.connect("dbname=news")
+    except psycopg2.Error as e:
+        print "Unable to connect!"
+        print e.pgerror
+        print e.diag.message_detail
+        sys.exit(1)
+    else:
+        print "Connected!"
+        return conn
 
 
 # 1. What are the most popular three articles of all time?

@@ -62,8 +62,10 @@ In this project you've been asked to build an internal reporting tool that will 
 
   4. Create author_view using:
   ```
-    create view author_view as select name, sum(article_view.views) as total from article_view, authors where 
-    authors.id=article_view, author group by authors.name order by total desc;
+    create view author_view as select authors.name, sum(article_view.views) as total from article_view, authors where
+    authors.id = article_view.author
+    group by authors.name
+    order by (sum(article_view.views)) desc;
   ```  
   5. Create view error_log_view using:
   ```
